@@ -280,7 +280,7 @@ function renderMechanismNetwork(edges) {
   });
   const visible = edges.filter((edge) => positions.has(edge.source) && positions.has(edge.target));
   const viewBox = window.innerWidth < 700 ? "70 55 710 500" : "35 28 790 548";
-  const trimEdge = (a, b, startGap = 16, endGap = 46) => {
+  const trimEdge = (a, b, startGap = 16, endGap = 30) => {
     const dx = b.x - a.x;
     const dy = b.y - a.y;
     const length = Math.hypot(dx, dy) || 1;
