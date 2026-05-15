@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Explore | The Origins of Competition Policy</title>
+    <meta
+      name="description"
+      content="Explore mechanism relationships, cases, origins, and sources."
+    />
+    <link rel="stylesheet" href="assets/site.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="wordmark" href="index.html" aria-label="The Origins of Competition Policy home">
+        <span>The Origins of Competition Policy</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="explore.html" aria-current="page"><span class="nav-icon nav-icon--explore" aria-hidden="true"></span><span>Explore</span></a>
+        <a href="paper.html"><span class="nav-icon nav-icon--paper" aria-hidden="true"></span><span>Paper</span></a>
+        <a href="methods.html"><span class="nav-icon nav-icon--methods" aria-hidden="true"></span><span>Methods &amp; Data</span></a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section page-section explore">
+        <div class="tabs" role="tablist" aria-label="Explore views">
+          <button class="tab is-active" data-tab="mechanisms" role="tab" aria-selected="true">
+            <span class="tab-icon tab-icon--mechanisms" aria-hidden="true"></span>
+            Mechanisms
+            <span class="tab-tip" role="tooltip">Common sign-aware relationships in extracted theories of harm.</span>
+          </button>
+          <button class="tab" data-tab="cases" role="tab">
+            <span class="tab-icon tab-icon--cases" aria-hidden="true"></span>
+            Cases
+            <span class="tab-tip" role="tooltip">Case documents with extracted theory-of-harm evidence.</span>
+          </button>
+          <button class="tab" data-tab="origins" role="tab">
+            <span class="tab-icon tab-icon--origins" aria-hidden="true"></span>
+            Origins
+            <span class="tab-tip" role="tooltip">Timing links between policy mechanisms and academic graph objects.</span>
+          </button>
+          <button class="tab" data-tab="sources" role="tab">
+            <span class="tab-icon tab-icon--sources" aria-hidden="true"></span>
+            Sources
+            <span class="tab-tip" role="tooltip">Academic, legal, and practitioner sources queued for expansion.</span>
+          </button>
+        </div>
+
+        <div class="explore-grid tab-panel is-active" id="tab-mechanisms">
+          <div>
+            <div class="view-switch" aria-label="Mechanism view">
+              <button class="view-switch__button is-active" type="button" data-mechanism-view="network">Network</button>
+              <button class="view-switch__button" type="button" data-mechanism-view="list">List</button>
+            </div>
+            <div class="mechanism-network mechanism-view is-active" id="edge-network" aria-label="Mechanism network"></div>
+            <div class="ranked-list mechanism-view" id="edge-list" aria-label="Top mechanism relationships"></div>
+          </div>
+          <aside class="inspector" id="edge-inspector" aria-label="Selected relationship"></aside>
+        </div>
+
+        <div class="tab-panel" id="tab-cases">
+          <div class="case-explorer">
+            <aside class="case-rail">
+              <label class="case-search">
+                <span>Search cases</span>
+                <input id="case-search" type="search" placeholder="case, authority, mechanism..." />
+              </label>
+              <div class="case-list" id="case-list" aria-label="Cases"></div>
+            </aside>
+            <div class="case-detail" id="case-detail" aria-label="Selected case"></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="tab-origins">
+          <div class="origin-controls" aria-label="Origins views">
+            <button class="origin-view-button is-active" type="button" data-origin-view="timeline">Timeline</button>
+            <button class="origin-view-button" type="button" data-origin-view="families">Families</button>
+            <button class="origin-view-button" type="button" data-origin-view="sources">Sources</button>
+          </div>
+          <div class="origin-view is-active" id="origin-timeline"></div>
+          <div class="origin-view" id="origin-families"></div>
+          <div class="origin-view" id="origin-sources"></div>
+        </div>
+
+        <div class="tab-panel" id="tab-sources">
+          <div class="source-layout">
+            <div class="source-summary">
+              <h3>
+                Expansion batch
+                <span class="fact-tip-wrap">
+                  <button class="fact-info" type="button" aria-label="Expansion batch definition">i</button>
+                  <span class="fact-tip" role="tooltip">Sixteen admitted sources queued for extraction or audit.</span>
+                </span>
+              </h3>
+            </div>
+            <div class="source-list" id="source-list"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Working site prototype</span>
+      <span id="updated-label">Updated 2026-05-15</span>
+    </footer>
+
+    <script src="assets/site-data.js"></script>
+    <script src="assets/site.js"></script>
+  </body>
+</html>
