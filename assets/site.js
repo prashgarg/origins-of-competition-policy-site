@@ -280,27 +280,39 @@ function renderMechanismNetwork(edges) {
   });
   const visible = edges.filter((edge) => positions.has(edge.source) && positions.has(edge.target));
   const viewBox = window.innerWidth < 700 ? "70 55 710 500" : "35 28 790 548";
+  const trimEdge = (a, b, startGap = 16, endGap = 46) => {
+    const dx = b.x - a.x;
+    const dy = b.y - a.y;
+    const length = Math.hypot(dx, dy) || 1;
+    const ux = dx / length;
+    const uy = dy / length;
+    return {
+      start: { x: a.x + ux * startGap, y: a.y + uy * startGap },
+      end: { x: b.x - ux * endGap, y: b.y - uy * endGap },
+    };
+  };
   el.innerHTML = `
     <svg viewBox="${viewBox}" role="img" aria-label="Network of common mechanism relationships">
       <defs>
-        <marker id="arrow-increase" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
-          <path d="M0,0 L10,5 L0,10 Z"></path>
+        <marker id="arrow-increase" markerWidth="5.6" markerHeight="5.6" refX="5" refY="2.8" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M0,0 L5.6,2.8 L0,5.6 Z"></path>
         </marker>
-        <marker id="arrow-decrease" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
-          <path d="M0,0 L10,5 L0,10 Z"></path>
+        <marker id="arrow-decrease" markerWidth="5.6" markerHeight="5.6" refX="5" refY="2.8" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M0,0 L5.6,2.8 L0,5.6 Z"></path>
         </marker>
       </defs>
       ${visible
         .map((edge, index) => {
           const a = positions.get(edge.source);
           const b = positions.get(edge.target);
-          const dx = b.x - a.x;
-          const dy = b.y - a.y;
+          const trimmed = trimEdge(a, b);
+          const dx = trimmed.end.x - trimmed.start.x;
+          const dy = trimmed.end.y - trimmed.start.y;
           const bend = Math.max(-55, Math.min(55, dx * 0.08 - dy * 0.05));
-          const mx = (a.x + b.x) / 2 - bend;
-          const my = (a.y + b.y) / 2 + bend;
+          const mx = (trimmed.start.x + trimmed.end.x) / 2 - bend;
+          const my = (trimmed.start.y + trimmed.end.y) / 2 + bend;
           return `<g class="network-edge-button" data-edge-index="${index}" tabindex="0" role="button" aria-label="${esc(edgePath(edge))}">
-            <path class="network-edge ${signClass(edge.sign)}" d="M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}"></path>
+            <path class="network-edge ${signClass(edge.sign)}" d="M ${trimmed.start.x} ${trimmed.start.y} Q ${mx} ${my} ${trimmed.end.x} ${trimmed.end.y}"></path>
           </g>`;
         })
         .join("")}
