@@ -586,6 +586,93 @@ h3 {
   text-decoration: underline;
 }
 
+.paper-page {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.36fr) minmax(0, 1fr);
+  gap: 34px;
+  align-items: start;
+}
+
+.paper-current {
+  position: sticky;
+  top: 84px;
+}
+
+.paper-current h1 {
+  margin: 0.18rem 0 0.65rem;
+}
+
+.paper-current p:not(.small-label) {
+  max-width: 38ch;
+  color: var(--muted);
+}
+
+.paper-current dl {
+  display: grid;
+  gap: 0.62rem;
+  margin: 1.4rem 0 1.3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.paper-current dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 320px;
+}
+
+.paper-current dt {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 760;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.paper-current dd {
+  margin: 0;
+  font-weight: 680;
+  text-align: right;
+}
+
+.paper-preview {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: rgba(255, 253, 248, 0.68);
+}
+
+.paper-preview__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 2.7rem;
+  padding: 0 0.82rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.82rem;
+}
+
+.paper-preview__bar a {
+  color: var(--accent);
+  font-weight: 680;
+  text-decoration: none;
+}
+
+.paper-preview__image {
+  display: block;
+  max-height: min(74svh, 780px);
+  overflow: auto;
+  background: #f7f7f7;
+}
+
+.paper-preview__image img {
+  display: block;
+  width: min(100%, 840px);
+  margin: 0 auto;
+  background: white;
+}
+
 .coming-soon {
   max-width: 760px;
   margin-top: 2.2rem;
@@ -2068,6 +2155,7 @@ th {
   .explore-grid.is-active,
   .source-browser,
   .method-columns,
+  .paper-page,
   .case-explorer,
   .case-detail__grid,
   .origin-family-layout,
@@ -2196,6 +2284,18 @@ th {
 
   .case-list {
     max-height: 420px;
+  }
+
+  .paper-current {
+    position: static;
+  }
+
+  .paper-current dl div {
+    max-width: none;
+  }
+
+  .paper-preview__image {
+    max-height: none;
   }
 
   .document-viewer iframe {

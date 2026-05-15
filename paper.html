@@ -24,23 +24,41 @@
 
     <main>
       <section class="section page-section">
-        <div class="section-head">
-          <h1>Paper</h1>
-        </div>
+        <div class="paper-page">
+          <aside class="paper-current" aria-label="Current draft">
+            <p class="small-label">Current draft</p>
+            <h1>Paper</h1>
+            <p>The working PDF is bundled here for coauthor review alongside the mechanism, case, and source views.</p>
+            <dl>
+              <div>
+                <dt>Version</dt>
+                <dd>2026-05-15</dd>
+              </div>
+              <div>
+                <dt>Format</dt>
+                <dd>PDF</dd>
+              </div>
+              <div>
+                <dt>Status</dt>
+                <dd>Working draft</dd>
+              </div>
+            </dl>
+            <div class="paper-actions">
+              <a class="button button--primary" href="public/paper/main.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+              <a class="button" href="explore.html">Inspect mechanisms</a>
+            </div>
+          </aside>
 
-        <div class="paper-actions">
-          <a class="button button--primary" href="public/paper/main.pdf">Open current PDF</a>
-          <a class="button" href="explore.html">Inspect mechanisms</a>
+          <section class="paper-preview" aria-label="Current paper preview">
+            <div class="paper-preview__bar">
+              <strong>Current PDF</strong>
+              <a href="public/paper/main.pdf" target="_blank" rel="noreferrer">Open full screen</a>
+            </div>
+            <a class="paper-preview__image" href="public/paper/main.pdf" target="_blank" rel="noreferrer">
+              <img src="public/paper/main-preview.png" alt="First page preview of the current paper PDF" />
+            </a>
+          </section>
         </div>
-
-        <section class="coming-soon" aria-label="Paper page planned content">
-          <h2>Coming soon:</h2>
-          <ul>
-            <li>Current draft, paper figures, and exhibit notes in one view.</li>
-            <li>Links from paper claims to the relevant mechanism, case, and source objects.</li>
-            <li>A clean change log for coauthor review as the empirical sections mature.</li>
-          </ul>
-        </section>
       </section>
     </main>
 
