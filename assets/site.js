@@ -24,12 +24,37 @@ const signClass = (value = "") => {
 
 function cleanCaseTitle(row = {}) {
   const raw = String(row.title || row.caseId || "").replace(/_/g, " ").replace(/\s+/g, " ").trim();
-  if (/^\d{4}s\s+\d+[a-z]*$/i.test(raw)) return `Historical case ${raw.replace(/^\d{4}s\s+/i, "")}`;
-  if (/^\d{4}s\s+/i.test(raw)) return raw.replace(/^\d{4}s\s+/i, "Historical case ");
-  return raw
+  const historical = raw.match(/^((?:19|20)\d{2}s)\s+(.+)$/i);
+  if (historical) {
+    const body = historical[2].replace(/^\d+/, "").trim();
+    if (body) return normalizeCaseTitle(toTitleCase(body));
+  }
+  return normalizeCaseTitle(raw);
+}
+
+function toTitleCase(value = "") {
+  return value.replace(/\b[a-z][a-z-]*/g, (word) => word.charAt(0).toUpperCase() + word.slice(1));
+}
+
+function normalizeCaseTitle(value = "") {
+  return value
+    .replace(/\bS P Global\b/g, "S&P Global")
     .replace(/\bS A\b/g, "SA")
+    .replace(/\bB V\b/g, "BV")
+    .replace(/\bN V\b/g, "NV")
     .replace(/\bP L C\b/g, "PLC")
-    .replace(/\bL T D\b/g, "Ltd");
+    .replace(/\bL T D\b/g, "Ltd")
+    .replace(/\bPlc\b/g, "PLC")
+    .replace(/\bplc\b/g, "PLC")
+    .replace(/\bltd\b/g, "Ltd")
+    .replace(/\bAnd\b/g, "and")
+    .replace(/\bOf\b/g, "of")
+    .replace(/\bOn\b/g, "on")
+    .replace(/\bIn\b/g, "in")
+    .replace(/\bThe\b/g, "the")
+    .replace(/^the\b/, "The")
+    .replace(/\s+CC$/g, "")
+    .trim();
 }
 
 function sourceGroup(row = {}) {
@@ -46,6 +71,14 @@ function docStatusLabel(doc) {
   if (doc.status === "available") return doc.type === "pdf" ? "PDF available" : "HTML available";
   if (doc.status === "too_large") return "Large source";
   return "Document pending";
+}
+
+function caseListMeta(row = {}) {
+  const doc = row.document;
+  const parts = [];
+  if (row.year) parts.push(row.year);
+  if (!doc || doc.status !== "available") parts.push(docStatusLabel(doc));
+  return parts.join(" · ");
 }
 
 function relationKey(edge) {
@@ -328,7 +361,7 @@ function renderCaseDetail(row, index = 0) {
     ? `
       <div class="document-viewer">
         <div class="document-viewer__bar">
-          <strong>${esc(docStatusLabel(doc))}</strong>
+          <strong>Source document</strong>
           <a href="${esc(doc.path)}" target="_blank" rel="noreferrer">Open full document</a>
         </div>
         ${
@@ -379,7 +412,6 @@ function renderCaseDetail(row, index = 0) {
     <div class="case-detail__head">
       <div class="case-tags">
         ${row.year ? `<span>${esc(row.year)}</span>` : ""}
-        <span>${esc(docStatusLabel(doc))}</span>
       </div>
       <h2>${esc(title)}</h2>
       <dl>
@@ -406,7 +438,7 @@ function renderCases(rows, selectedIndex = 0) {
         <button class="case-row ${index === selectedIndex ? "is-active" : ""}" data-case-index="${index}">
           <span>${String(index + 1).padStart(2, "0")}</span>
           <strong>${esc(cleanCaseTitle(r))}</strong>
-          <small>${esc([r.year, docStatusLabel(r.document)].filter(Boolean).join(" · "))}</small>
+          ${caseListMeta(r) ? `<small>${esc(caseListMeta(r))}</small>` : ""}
         </button>
       `
     )
