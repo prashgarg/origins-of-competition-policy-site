@@ -116,8 +116,27 @@ const nodeNotes = {
   "product differentiation": "Differences across products that affect substitution and competitive pressure.",
 };
 
+const nodeKinds = {
+  "barriers to entry": "Mechanism",
+  "competitive constraint": "Constraint",
+  "price increase": "Outcome",
+  "market concentration": "Market structure",
+  "horizontal merger": "Transaction type",
+  "vertical integration": "Transaction type",
+  "input foreclosure": "Mechanism",
+  "market share": "Diagnostic",
+  "closeness of competition": "Diagnostic",
+  "substantial lessening of competition": "Legal standard",
+  "service quality": "Outcome",
+  "product differentiation": "Market feature",
+};
+
 function nodeNote(label = "") {
   return nodeNotes[String(label).toLowerCase()] || "Extracted concept node from the policy mechanism graph.";
+}
+
+function nodeKind(label = "") {
+  return nodeKinds[String(label).toLowerCase()] || "Concept";
 }
 
 function setText(id, text) {
@@ -260,15 +279,15 @@ function renderMechanismNetwork(edges) {
     positions.set(label, fixed || { x: 170 + (i % 5) * 140, y: 120 + Math.floor(i / 5) * 120, anchor: "middle" });
   });
   const visible = edges.filter((edge) => positions.has(edge.source) && positions.has(edge.target));
-  const viewBox = window.innerWidth < 700 ? "70 55 710 500" : "0 0 860 580";
+  const viewBox = window.innerWidth < 700 ? "70 55 710 500" : "35 28 790 548";
   el.innerHTML = `
     <svg viewBox="${viewBox}" role="img" aria-label="Network of common mechanism relationships">
       <defs>
-        <marker id="arrow-increase" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-          <path d="M0,0 L8,4 L0,8 Z"></path>
+        <marker id="arrow-increase" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+          <path d="M0,0 L10,5 L0,10 Z"></path>
         </marker>
-        <marker id="arrow-decrease" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-          <path d="M0,0 L8,4 L0,8 Z"></path>
+        <marker id="arrow-decrease" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+          <path d="M0,0 L10,5 L0,10 Z"></path>
         </marker>
       </defs>
       ${visible
@@ -288,7 +307,19 @@ function renderMechanismNetwork(edges) {
       ${labels
         .map((label) => {
           const p = positions.get(label);
-          return `<g class="network-node"><title>${esc(nodeNote(label))}</title><circle cx="${p.x}" cy="${p.y}" r="8"></circle><text x="${p.x}" y="${p.y + 25}" text-anchor="${p.anchor || "middle"}">${esc(label)}</text></g>`;
+          const tipX = Math.max(60, Math.min(620, p.x - 118));
+          const tipY = p.y < 210 ? p.y + 45 : p.y - 112;
+          return `<g class="network-node" tabindex="0">
+            <title>${esc(`${nodeKind(label)}. ${nodeNote(label)}`)}</title>
+            <circle cx="${p.x}" cy="${p.y}" r="11"></circle>
+            <text x="${p.x}" y="${p.y + 33}" text-anchor="${p.anchor || "middle"}">${esc(label)}</text>
+            <foreignObject class="network-node-tip" x="${tipX}" y="${tipY}" width="236" height="88">
+              <div xmlns="http://www.w3.org/1999/xhtml">
+                <strong>${esc(nodeKind(label))}</strong>
+                <span>${esc(nodeNote(label))}</span>
+              </div>
+            </foreignObject>
+          </g>`;
         })
         .join("")}
     </svg>
