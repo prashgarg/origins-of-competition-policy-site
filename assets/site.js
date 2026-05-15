@@ -15,6 +15,22 @@ const familyLabel = (value = "") =>
     .replace(/\b\w/g, (m) => m.toUpperCase())
     .replace("And", "and");
 
+const humanize = (value = "") =>
+  String(value || "")
+    .replace(/_/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+function sourceFamilyLabel(value = "") {
+  return {
+    foreclosure_vertical: "Vertical foreclosure",
+    coordination_concentration: "Coordination and concentration",
+    entry_barriers: "Entry barriers",
+    unilateral_pricing: "Unilateral pricing",
+    market_definition_legal: "Market definition",
+  }[value] || familyLabel(value);
+}
+
 const signClass = (value = "") => {
   const sign = String(value).toLowerCase();
   if (sign.includes("decrease") || sign.includes("mitigat") || sign.includes("reduce")) return "sign--decrease";
@@ -647,22 +663,88 @@ function renderOriginSources() {
 }
 
 function initSources() {
-  const list = document.getElementById("source-list");
-  if (!list) return;
-  list.innerHTML = (data.sources || [])
-    .map(
-      (r) => `
-        <article class="source-row">
-          <header>
-            <strong>${r.label}</strong>
-            <span>${r.year}</span>
-          </header>
-          <p>${familyLabel(r.family)} · ${r.layer.replace(/_/g, " ")} · ${r.action.replace(/_/g, " ")}</p>
-          <p>${r.concepts}</p>
-        </article>
-      `
-    )
-    .join("");
+  renderSources();
+}
+
+function renderSources(selectedFamily = null, selectedSourceId = null) {
+  const el = document.getElementById("source-browser");
+  if (!el) return;
+  const sources = data.sources || [];
+  if (!sources.length) {
+    el.innerHTML = `<p class="list-note">Source expansion queue is not bundled yet.</p>`;
+    return;
+  }
+
+  const families = [...new Set(sources.map((source) => source.family))];
+  const family = selectedFamily || el.dataset.family || families[0];
+  const familySources = sources.filter((source) => source.family === family);
+  const selected = familySources.find((source) => source.sourceId === (selectedSourceId || el.dataset.sourceId)) || familySources[0];
+  const years = familySources.map((source) => Number(source.year)).filter(Boolean);
+  const layerCount = new Set(familySources.map((source) => source.layer)).size;
+  const statusCount = new Map();
+  familySources.forEach((source) => statusCount.set(source.status, (statusCount.get(source.status) || 0) + 1));
+
+  el.dataset.family = family;
+  el.dataset.sourceId = selected?.sourceId || "";
+  el.innerHTML = `
+    <aside class="source-family-list" aria-label="Source families">
+      ${families
+        .map((familyName) => {
+          const rows = sources.filter((source) => source.family === familyName);
+          return `
+            <button type="button" class="${familyName === family ? "is-active" : ""}" data-source-family="${esc(familyName)}">
+              <strong>${sourceFamilyLabel(familyName)}</strong>
+              <span>${fmt(rows.length)} sources</span>
+            </button>
+          `;
+        })
+        .join("")}
+    </aside>
+    <section class="source-detail" aria-label="Selected source family">
+      <div class="source-detail__head">
+        <div>
+          <h3>${sourceFamilyLabel(family)}</h3>
+          <p>${fmt(familySources.length)} sources · ${fmt(layerCount)} layers · ${years.length ? `${Math.min(...years)}-${Math.max(...years)}` : "year pending"}</p>
+        </div>
+        <span class="source-status-chip">${[...statusCount.entries()].map(([status, count]) => `${fmt(count)} ${humanize(status)}`).join(" · ")}</span>
+      </div>
+      <article class="source-focus">
+        <header>
+          <strong>${esc(selected.label)}</strong>
+          <span>${esc(selected.year)}</span>
+        </header>
+        <p>${esc(humanize(selected.layer))} · ${esc(humanize(selected.action))}</p>
+        <div class="source-concepts">
+          ${String(selected.concepts || "")
+            .split(";")
+            .map((concept) => concept.trim())
+            .filter(Boolean)
+            .map((concept) => `<span>${esc(concept)}</span>`)
+            .join("")}
+        </div>
+      </article>
+      <div class="source-queue" aria-label="Sources in selected family">
+        ${familySources
+          .map(
+            (source) => `
+              <button type="button" class="${source.sourceId === selected.sourceId ? "is-active" : ""}" data-source-id="${esc(source.sourceId)}">
+                <span>${esc(source.year)}</span>
+                <strong>${esc(source.label)}</strong>
+                <small>${esc(humanize(source.status))}</small>
+              </button>
+            `
+          )
+          .join("")}
+      </div>
+    </section>
+  `;
+
+  el.querySelectorAll("[data-source-family]").forEach((button) => {
+    button.addEventListener("click", () => renderSources(button.dataset.sourceFamily, null));
+  });
+  el.querySelectorAll("[data-source-id]").forEach((button) => {
+    button.addEventListener("click", () => renderSources(family, button.dataset.sourceId));
+  });
 }
 
 initFacts();
