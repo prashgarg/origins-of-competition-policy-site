@@ -575,7 +575,8 @@ function renderOriginTimeline() {
       </div>
       ${rows
         .map((row) => {
-          const policyX = x(row.earliestPolicy);
+          const policyLabel = row.earliestPolicyLabel || row.earliestPolicy;
+          const policyX = x(row.earliestPolicyPlotYear || row.earliestPolicy);
           const academicX = x(row.earliestSource);
           const left = Math.min(policyX, academicX);
           const width = Math.max(1.6, Math.abs(academicX - policyX));
@@ -592,7 +593,7 @@ function renderOriginTimeline() {
                 <span class="timeline-dot timeline-dot--policy" style="left:${policyX}%"><b>Policy</b></span>
                 <span class="timeline-dot timeline-dot--academic" style="left:${academicX}%"><b>Academic</b></span>
               </span>
-              <span class="timeline-years"><em>${esc(dominant)}</em>${esc(row.earliestPolicy)} / ${esc(row.earliestSource)}</span>
+              <span class="timeline-years"><em>${esc(dominant)}</em>${esc(policyLabel)} / ${esc(row.earliestSource)}</span>
             </button>
           `;
         })
@@ -626,7 +627,7 @@ function renderOriginFamilies(selectedFamily = null) {
       <div class="origin-family-detail">
         <h3>${familyLabel(row.family)}</h3>
         <dl class="origin-summary">
-          <div><dt>Policy</dt><dd>${esc(row.earliestPolicy)}</dd></div>
+          <div><dt>Policy</dt><dd>${esc(row.earliestPolicyLabel || row.earliestPolicy)}</dd></div>
           <div><dt>Academic</dt><dd>${esc(row.earliestSource)}</dd></div>
           <div><dt>Edges</dt><dd>${fmt(row.policyEdges)}</dd></div>
         </dl>
@@ -644,7 +645,7 @@ function renderOriginFamilies(selectedFamily = null) {
           ${triples.map((triple) => `
             <article>
               <strong>${esc(triple.triple)}</strong>
-              <span>${esc(timingLabel(triple.timingBucket))} · policy ${esc(triple.policyFirstYear)} · academic ${esc(triple.academicFirstYear)}</span>
+              <span>${esc(timingLabel(triple.timingBucket))} · policy ${esc(triple.policyFirstLabel || triple.policyFirstYear)} · academic ${esc(triple.academicFirstYear)}</span>
             </article>
           `).join("")}
         </div>

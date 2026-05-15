@@ -2618,6 +2618,8 @@ window.HC_SITE_DATA = {
       "contemporaneous": 3,
       "policyBefore": 6,
       "earliestPolicy": "1960",
+      "earliestPolicyLabel": "1960s",
+      "earliestPolicyPlotYear": "1965",
       "earliestSource": "1976"
     },
     {
@@ -2629,6 +2631,8 @@ window.HC_SITE_DATA = {
       "contemporaneous": 0,
       "policyBefore": 6,
       "earliestPolicy": "1950",
+      "earliestPolicyLabel": "1950s",
+      "earliestPolicyPlotYear": "1955",
       "earliestSource": "1979"
     },
     {
@@ -2640,6 +2644,8 @@ window.HC_SITE_DATA = {
       "contemporaneous": 1,
       "policyBefore": 8,
       "earliestPolicy": "1950",
+      "earliestPolicyLabel": "1950s",
+      "earliestPolicyPlotYear": "1955",
       "earliestSource": "1985"
     },
     {
@@ -2651,6 +2657,8 @@ window.HC_SITE_DATA = {
       "contemporaneous": 3,
       "policyBefore": 10,
       "earliestPolicy": "1950",
+      "earliestPolicyLabel": "1950s",
+      "earliestPolicyPlotYear": "1955",
       "earliestSource": "1982"
     },
     {
@@ -2662,6 +2670,8 @@ window.HC_SITE_DATA = {
       "contemporaneous": 1,
       "policyBefore": 12,
       "earliestPolicy": "1950",
+      "earliestPolicyLabel": "1950s",
+      "earliestPolicyPlotYear": "1955",
       "earliestSource": "1991"
     },
     {
@@ -2673,6 +2683,8 @@ window.HC_SITE_DATA = {
       "contemporaneous": 0,
       "policyBefore": 2,
       "earliestPolicy": "1990",
+      "earliestPolicyLabel": "1990s",
+      "earliestPolicyPlotYear": "1995",
       "earliestSource": "1996"
     },
     {
@@ -2684,6 +2696,8 @@ window.HC_SITE_DATA = {
       "contemporaneous": 0,
       "policyBefore": 2,
       "earliestPolicy": "1990",
+      "earliestPolicyLabel": "1990s",
+      "earliestPolicyPlotYear": "1995",
       "earliestSource": "2014"
     }
   ],
@@ -2694,6 +2708,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 21,
       "policyCases": 21,
       "policyFirstYear": "1990",
+      "policyFirstLabel": "1990s",
+      "policyFirstPlotYear": "1995",
       "academicFirstYear": "1978",
       "timingBucket": "academic_before_policy",
       "academicPapers": 1
@@ -2704,6 +2720,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 16,
       "policyCases": 16,
       "policyFirstYear": "1960",
+      "policyFirstLabel": "1960s",
+      "policyFirstPlotYear": "1965",
       "academicFirstYear": "1979",
       "timingBucket": "policy_before_academic",
       "academicPapers": 4
@@ -2714,6 +2732,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 13,
       "policyCases": 13,
       "policyFirstYear": "2000",
+      "policyFirstLabel": "2000s",
+      "policyFirstPlotYear": "2005",
       "academicFirstYear": "1991",
       "timingBucket": "academic_before_policy",
       "academicPapers": 1
@@ -2724,6 +2744,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 5,
       "policyCases": 5,
       "policyFirstYear": "2006",
+      "policyFirstLabel": "2006",
+      "policyFirstPlotYear": "2006",
       "academicFirstYear": "2016",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -2734,6 +2756,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 3,
       "policyCases": 3,
       "policyFirstYear": "2010",
+      "policyFirstLabel": "2010",
+      "policyFirstPlotYear": "2010",
       "academicFirstYear": "2010",
       "timingBucket": "roughly_contemporaneous",
       "academicPapers": 1
@@ -2744,6 +2768,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 2,
       "policyCases": 2,
       "policyFirstYear": "1970",
+      "policyFirstLabel": "1970s",
+      "policyFirstPlotYear": "1975",
       "academicFirstYear": "1983",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -2754,6 +2780,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 2,
       "policyCases": 2,
       "policyFirstYear": "2000",
+      "policyFirstLabel": "2000s",
+      "policyFirstPlotYear": "2005",
       "academicFirstYear": "2022",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -2764,6 +2792,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 2,
       "policyCases": 2,
       "policyFirstYear": "2004",
+      "policyFirstLabel": "2004",
+      "policyFirstPlotYear": "2004",
       "academicFirstYear": "1982",
       "timingBucket": "academic_before_policy",
       "academicPapers": 1
@@ -2774,6 +2804,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "2003",
+      "policyFirstLabel": "2003",
+      "policyFirstPlotYear": "2003",
       "academicFirstYear": "2006",
       "timingBucket": "roughly_contemporaneous",
       "academicPapers": 1
@@ -2784,6 +2816,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "2005",
+      "policyFirstLabel": "2005",
+      "policyFirstPlotYear": "2005",
       "academicFirstYear": "1976",
       "timingBucket": "academic_before_policy",
       "academicPapers": 1
@@ -2794,6 +2828,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "2010",
+      "policyFirstLabel": "2010",
+      "policyFirstPlotYear": "2010",
       "academicFirstYear": "1992",
       "timingBucket": "academic_before_policy",
       "academicPapers": 1
@@ -2804,6 +2840,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "2013",
+      "policyFirstLabel": "2013",
+      "policyFirstPlotYear": "2013",
       "academicFirstYear": "2001",
       "timingBucket": "academic_before_policy",
       "academicPapers": 1
@@ -2814,6 +2852,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "2021",
+      "policyFirstLabel": "2021",
+      "policyFirstPlotYear": "2021",
       "academicFirstYear": "1991",
       "timingBucket": "academic_before_policy",
       "academicPapers": 2
@@ -2824,6 +2864,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 4,
       "policyCases": 4,
       "policyFirstYear": "1990",
+      "policyFirstLabel": "1990s",
+      "policyFirstPlotYear": "1995",
       "academicFirstYear": "2014",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -2834,6 +2876,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 3,
       "policyCases": 3,
       "policyFirstYear": "1970",
+      "policyFirstLabel": "1970s",
+      "policyFirstPlotYear": "1975",
       "academicFirstYear": "1991",
       "timingBucket": "policy_before_academic",
       "academicPapers": 6
@@ -2844,6 +2888,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "1990",
+      "policyFirstLabel": "1990s",
+      "policyFirstPlotYear": "1995",
       "academicFirstYear": "2005",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -2854,6 +2900,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "1990",
+      "policyFirstLabel": "1990s",
+      "policyFirstPlotYear": "1995",
       "academicFirstYear": "2017",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -2864,6 +2912,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "1990",
+      "policyFirstLabel": "1990s",
+      "policyFirstPlotYear": "1995",
       "academicFirstYear": "2012",
       "timingBucket": "policy_before_academic",
       "academicPapers": 2
@@ -2874,6 +2924,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "1990",
+      "policyFirstLabel": "1990s",
+      "policyFirstPlotYear": "1995",
       "academicFirstYear": "2019",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -2884,6 +2936,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "2007",
+      "policyFirstLabel": "2007",
+      "policyFirstPlotYear": "2007",
       "academicFirstYear": "2010",
       "timingBucket": "roughly_contemporaneous",
       "academicPapers": 2
@@ -2894,6 +2948,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 16,
       "policyCases": 15,
       "policyFirstYear": "1990",
+      "policyFirstLabel": "1990s",
+      "policyFirstPlotYear": "1995",
       "academicFirstYear": "1979",
       "timingBucket": "academic_before_policy",
       "academicPapers": 4
@@ -2904,6 +2960,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 11,
       "policyCases": 11,
       "policyFirstYear": "1970",
+      "policyFirstLabel": "1970s",
+      "policyFirstPlotYear": "1975",
       "academicFirstYear": "1990",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -2914,6 +2972,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 9,
       "policyCases": 9,
       "policyFirstYear": "2004",
+      "policyFirstLabel": "2004",
+      "policyFirstPlotYear": "2004",
       "academicFirstYear": "1989",
       "timingBucket": "academic_before_policy",
       "academicPapers": 2
@@ -2924,6 +2984,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 7,
       "policyCases": 7,
       "policyFirstYear": "1990",
+      "policyFirstLabel": "1990s",
+      "policyFirstPlotYear": "1995",
       "academicFirstYear": "2024",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -2934,6 +2996,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 3,
       "policyCases": 3,
       "policyFirstYear": "2000",
+      "policyFirstLabel": "2000s",
+      "policyFirstPlotYear": "2005",
       "academicFirstYear": "1983",
       "timingBucket": "academic_before_policy",
       "academicPapers": 4
@@ -2944,6 +3008,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 3,
       "policyCases": 2,
       "policyFirstYear": "2017",
+      "policyFirstLabel": "2017",
+      "policyFirstPlotYear": "2017",
       "academicFirstYear": "1986",
       "timingBucket": "academic_before_policy",
       "academicPapers": 1
@@ -2954,6 +3020,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 2,
       "policyCases": 2,
       "policyFirstYear": "1970",
+      "policyFirstLabel": "1970s",
+      "policyFirstPlotYear": "1975",
       "academicFirstYear": "2013",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -2964,6 +3032,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "1970",
+      "policyFirstLabel": "1970s",
+      "policyFirstPlotYear": "1975",
       "academicFirstYear": "2004",
       "timingBucket": "policy_before_academic",
       "academicPapers": 2
@@ -2974,6 +3044,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "2000",
+      "policyFirstLabel": "2000s",
+      "policyFirstPlotYear": "2005",
       "academicFirstYear": "1983",
       "timingBucket": "academic_before_policy",
       "academicPapers": 1
@@ -2984,6 +3056,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 7,
       "policyCases": 7,
       "policyFirstYear": "1990",
+      "policyFirstLabel": "1990s",
+      "policyFirstPlotYear": "1995",
       "academicFirstYear": "1992",
       "timingBucket": "roughly_contemporaneous",
       "academicPapers": 3
@@ -2994,6 +3068,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 5,
       "policyCases": 5,
       "policyFirstYear": "2013",
+      "policyFirstLabel": "2013",
+      "policyFirstPlotYear": "2013",
       "academicFirstYear": "2019",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -3004,6 +3080,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 3,
       "policyCases": 3,
       "policyFirstYear": "1960",
+      "policyFirstLabel": "1960s",
+      "policyFirstPlotYear": "1965",
       "academicFirstYear": "1988",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -3014,6 +3092,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 2,
       "policyCases": 2,
       "policyFirstYear": "1970",
+      "policyFirstLabel": "1970s",
+      "policyFirstPlotYear": "1975",
       "academicFirstYear": "2001",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -3024,6 +3104,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 2,
       "policyCases": 2,
       "policyFirstYear": "2000",
+      "policyFirstLabel": "2000s",
+      "policyFirstPlotYear": "2005",
       "academicFirstYear": "1985",
       "timingBucket": "academic_before_policy",
       "academicPapers": 1
@@ -3034,6 +3116,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "1950",
+      "policyFirstLabel": "1950s",
+      "policyFirstPlotYear": "1955",
       "academicFirstYear": "1996",
       "timingBucket": "policy_before_academic",
       "academicPapers": 2
@@ -3044,6 +3128,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "1970",
+      "policyFirstLabel": "1970s",
+      "policyFirstPlotYear": "1975",
       "academicFirstYear": "2007",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -3054,6 +3140,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "1990",
+      "policyFirstLabel": "1990s",
+      "policyFirstPlotYear": "1995",
       "academicFirstYear": "2006",
       "timingBucket": "policy_before_academic",
       "academicPapers": 2
@@ -3064,6 +3152,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "1990",
+      "policyFirstLabel": "1990s",
+      "policyFirstPlotYear": "1995",
       "academicFirstYear": "2008",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -3074,6 +3164,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "2000",
+      "policyFirstLabel": "2000s",
+      "policyFirstPlotYear": "2005",
       "academicFirstYear": "2008",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -3084,6 +3176,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "2014",
+      "policyFirstLabel": "2014",
+      "policyFirstPlotYear": "2014",
       "academicFirstYear": "1998",
       "timingBucket": "academic_before_policy",
       "academicPapers": 3
@@ -3094,6 +3188,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "",
+      "policyFirstLabel": "",
+      "policyFirstPlotYear": "",
       "academicFirstYear": "2006",
       "timingBucket": "missing",
       "academicPapers": 1
@@ -3104,6 +3200,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 3,
       "policyCases": 3,
       "policyFirstYear": "1990",
+      "policyFirstLabel": "1990s",
+      "policyFirstPlotYear": "1995",
       "academicFirstYear": "2003",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -3114,6 +3212,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "1990",
+      "policyFirstLabel": "1990s",
+      "policyFirstPlotYear": "1995",
       "academicFirstYear": "1996",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -3124,6 +3224,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 16,
       "policyCases": 16,
       "policyFirstYear": "1960",
+      "policyFirstLabel": "1960s",
+      "policyFirstPlotYear": "1965",
       "academicFirstYear": "1991",
       "timingBucket": "policy_before_academic",
       "academicPapers": 4
@@ -3134,6 +3236,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 11,
       "policyCases": 11,
       "policyFirstYear": "1990",
+      "policyFirstLabel": "1990s",
+      "policyFirstPlotYear": "1995",
       "academicFirstYear": "1998",
       "timingBucket": "policy_before_academic",
       "academicPapers": 3
@@ -3144,6 +3248,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 5,
       "policyCases": 4,
       "policyFirstYear": "2012",
+      "policyFirstLabel": "2012",
+      "policyFirstPlotYear": "2012",
       "academicFirstYear": "1982",
       "timingBucket": "academic_before_policy",
       "academicPapers": 1
@@ -3154,6 +3260,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 4,
       "policyCases": 4,
       "policyFirstYear": "1950",
+      "policyFirstLabel": "1950s",
+      "policyFirstPlotYear": "1955",
       "academicFirstYear": "2006",
       "timingBucket": "policy_before_academic",
       "academicPapers": 3
@@ -3164,6 +3272,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 2,
       "policyCases": 2,
       "policyFirstYear": "1990",
+      "policyFirstLabel": "1990s",
+      "policyFirstPlotYear": "1995",
       "academicFirstYear": "2008",
       "timingBucket": "policy_before_academic",
       "academicPapers": 2
@@ -3174,6 +3284,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 2,
       "policyCases": 2,
       "policyFirstYear": "2003",
+      "policyFirstLabel": "2003",
+      "policyFirstPlotYear": "2003",
       "academicFirstYear": "2014",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -3184,6 +3296,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 2,
       "policyCases": 2,
       "policyFirstYear": "2003",
+      "policyFirstLabel": "2003",
+      "policyFirstPlotYear": "2003",
       "academicFirstYear": "2007",
       "timingBucket": "roughly_contemporaneous",
       "academicPapers": 1
@@ -3194,6 +3308,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "1970",
+      "policyFirstLabel": "1970s",
+      "policyFirstPlotYear": "1975",
       "academicFirstYear": "2017",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -3204,6 +3320,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "1990",
+      "policyFirstLabel": "1990s",
+      "policyFirstPlotYear": "1995",
       "academicFirstYear": "2023",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -3214,6 +3332,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "2008",
+      "policyFirstLabel": "2008",
+      "policyFirstPlotYear": "2008",
       "academicFirstYear": "1992",
       "timingBucket": "academic_before_policy",
       "academicPapers": 1
@@ -3224,6 +3344,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "2014",
+      "policyFirstLabel": "2014",
+      "policyFirstPlotYear": "2014",
       "academicFirstYear": "1995",
       "timingBucket": "academic_before_policy",
       "academicPapers": 5
@@ -3234,6 +3356,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "2016",
+      "policyFirstLabel": "2016",
+      "policyFirstPlotYear": "2016",
       "academicFirstYear": "2005",
       "timingBucket": "academic_before_policy",
       "academicPapers": 1
@@ -3244,6 +3368,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "1990",
+      "policyFirstLabel": "1990s",
+      "policyFirstPlotYear": "1995",
       "academicFirstYear": "2023",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1
@@ -3254,6 +3380,8 @@ window.HC_SITE_DATA = {
       "policyEdges": 1,
       "policyCases": 1,
       "policyFirstYear": "2000",
+      "policyFirstLabel": "2000s",
+      "policyFirstPlotYear": "2005",
       "academicFirstYear": "2014",
       "timingBucket": "policy_before_academic",
       "academicPapers": 1

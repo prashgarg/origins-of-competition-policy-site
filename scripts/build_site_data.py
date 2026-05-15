@@ -44,6 +44,20 @@ def fmt_int(value: int) -> str:
     return f"{value:,}"
 
 
+def historical_policy_period(value: str) -> dict[str, str]:
+    """Represent decade-coded historical case dates without false precision."""
+    year = as_int(value)
+    if year and 1950 <= year <= 2000 and year % 10 == 0:
+        return {
+            "label": f"{year}s",
+            "plotYear": str(year + 5),
+        }
+    return {
+        "label": str(value or ""),
+        "plotYear": str(value or ""),
+    }
+
+
 def clean_text(value: object, limit: int = 240) -> str:
     text = str(value or "").strip()
     text = re.sub(r"\s+", " ", text)
@@ -386,6 +400,8 @@ def main() -> None:
             "contemporaneous": as_int(r["roughly_contemporaneous"]),
             "policyBefore": as_int(r["policy_before_academic"]),
             "earliestPolicy": r["earliest_policy_year"],
+            "earliestPolicyLabel": historical_policy_period(r["earliest_policy_year"])["label"],
+            "earliestPolicyPlotYear": historical_policy_period(r["earliest_policy_year"])["plotYear"],
             "earliestSource": r["earliest_fg_year"],
         }
         for r in origins_raw
@@ -409,6 +425,8 @@ def main() -> None:
             "policyEdges": as_int(r["policy_edges"]),
             "policyCases": as_int(r["policy_cases"]),
             "policyFirstYear": r["policy_first_year"],
+            "policyFirstLabel": historical_policy_period(r["policy_first_year"])["label"],
+            "policyFirstPlotYear": historical_policy_period(r["policy_first_year"])["plotYear"],
             "academicFirstYear": r["fg_first_year"],
             "timingBucket": r["timing_bucket"],
             "academicPapers": as_int(r["fg_papers"]),
