@@ -211,8 +211,9 @@ function renderMechanismNetwork(edges) {
     positions.set(label, fixed || { x: 170 + (i % 5) * 140, y: 120 + Math.floor(i / 5) * 120, anchor: "middle" });
   });
   const visible = edges.filter((edge) => positions.has(edge.source) && positions.has(edge.target));
+  const viewBox = window.innerWidth < 700 ? "70 55 710 500" : "0 0 860 580";
   el.innerHTML = `
-    <svg viewBox="0 0 860 580" role="img" aria-label="Network of common mechanism relationships">
+    <svg viewBox="${viewBox}" role="img" aria-label="Network of common mechanism relationships">
       <defs>
         <marker id="arrow-increase" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
           <path d="M0,0 L8,4 L0,8 Z"></path>
@@ -250,11 +251,6 @@ function renderMechanismNetwork(edges) {
       if (event.key === "Enter" || event.key === " ") select();
     });
   });
-  if (window.innerWidth < 700) {
-    window.setTimeout(() => {
-      el.scrollLeft = 250;
-    }, 0);
-  }
 }
 
 function initMechanismViewSwitch() {
