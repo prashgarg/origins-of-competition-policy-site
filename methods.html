@@ -24,20 +24,79 @@
 
     <main>
       <section class="section page-section">
-        <div class="section-head">
-          <h1>Methods &amp; Data</h1>
-        </div>
+        <div class="methods-page">
+          <header class="methods-head">
+            <p class="small-label">Methods &amp; data</p>
+            <h1>Construction status</h1>
+          </header>
 
-        <section class="coming-soon" aria-label="Methods and data planned content">
-          <h2>Coming soon:</h2>
-          <ul>
-            <li>Corpus scope: modern CMA materials, historical UK competition cases, academic sources, and legal/practitioner sources.</li>
-            <li>Extraction protocol for theories of harm, sign-aware mechanism edges, and case-level evidence.</li>
-            <li>Concept resolution notes, including the economics graph and competition-policy ontology extension.</li>
-            <li>Origins matching diagnostics: what is matched, unresolved, and still awaiting source expansion.</li>
-            <li>Release notes for case documents, derived graph objects, and reproducibility materials.</li>
-          </ul>
-        </section>
+          <section class="methods-map" aria-label="Methods construction map">
+            <div class="methods-map__path">
+              <button
+                type="button"
+                class="methods-node is-ready"
+                data-method-title="Policy corpus"
+                data-method-detail="Case documents are staged for the long-run UK corpus and the modern CMA tranche. The public site currently exposes a curated document viewer rather than every raw file."
+              >
+                <span>Policy corpus</span>
+                <strong>ready</strong>
+              </button>
+              <i></i>
+              <button
+                type="button"
+                class="methods-node is-ready"
+                data-method-title="Theory-of-harm extraction"
+                data-method-detail="The modern concept-level extraction contains 2,806 theory-of-harm graphs and 12,081 directed relationships, with evidence retained at the case level."
+              >
+                <span>ToH graphs</span>
+                <strong>ready</strong>
+              </button>
+              <i></i>
+              <button
+                type="button"
+                class="methods-node is-active"
+                data-method-title="Concept resolution"
+                data-method-detail="Policy mechanism nodes are being mapped into the academic graph concept space. Competition-policy ontology expansion is underway for legal and institutional terms."
+              >
+                <span>Concepts</span>
+                <strong>in progress</strong>
+              </button>
+              <i></i>
+              <button
+                type="button"
+                class="methods-node is-active"
+                data-method-title="Origins matching"
+                data-method-detail="Origins diagnostics compare policy mechanism triples with academic graph objects and named source candidates. This is currently internal and will be promoted after source expansion."
+              >
+                <span>Origins</span>
+                <strong>in progress</strong>
+              </button>
+            </div>
+          </section>
+
+          <section class="methods-status" aria-label="Methods status">
+            <article>
+              <span class="status-dot status-dot--ready"></span>
+              <strong>Case viewer</strong>
+              <p>Documents and extracted ToH evidence are visible in Explore.</p>
+            </article>
+            <article>
+              <span class="status-dot status-dot--ready"></span>
+              <strong>Mechanism map</strong>
+              <p>Common sign-aware relationships are bundled for inspection.</p>
+            </article>
+            <article>
+              <span class="status-dot status-dot--active"></span>
+              <strong>Source expansion</strong>
+              <p>Named academic, legal, and practitioner sources are queued by family.</p>
+            </article>
+            <article>
+              <span class="status-dot status-dot--active"></span>
+              <strong>Reproducibility notes</strong>
+              <p>Public release notes will follow once the object definitions settle.</p>
+            </article>
+          </section>
+        </div>
       </section>
     </main>
 
