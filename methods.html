@@ -31,28 +31,33 @@
             <p>Current public objects and the pieces still being resolved.</p>
           </header>
 
+          <div class="status-note status-note--work">
+            <strong>Source-level UK extraction in progress.</strong>
+            <span>The mechanism, case, and origins views currently show provisional placeholders from a superseded intermediate graph object. They will be rebuilt after the returned source-level run is validated.</span>
+          </div>
+
           <section class="methods-map" aria-label="Methods construction map">
             <div class="methods-map__path">
               <button
                 type="button"
                 class="methods-node is-ready"
                 data-method-title="Policy corpus"
-                data-method-detail="Case documents are staged for the long-run UK corpus and the modern CMA tranche. The public site currently exposes a curated document viewer rather than every raw file."
+                data-method-detail="Case documents are staged for the long-run UK corpus. The public site exposes a curated document viewer rather than every raw file."
               >
                 <span>Policy corpus</span>
-                <em>1,301 cases</em>
+                <em>UK source texts</em>
                 <strong>ready</strong>
               </button>
               <i></i>
               <button
                 type="button"
-                class="methods-node is-ready"
+                class="methods-node is-active"
                 data-method-title="Theory-of-harm extraction"
-                data-method-detail="The modern concept-level extraction contains 2,806 theory-of-harm graphs and 12,081 directed relationships, with evidence retained at the case level."
+                data-method-detail="The active run reads parsed UK source documents directly. The older 2,806-graph object is retained only as a provisional display layer until the new output returns."
               >
                 <span>Harm graphs</span>
-                <em>2,806 graphs</em>
-                <strong>ready</strong>
+                <em>source-level run</em>
+                <strong>in progress</strong>
               </button>
               <i></i>
               <button
@@ -70,10 +75,10 @@
                 type="button"
                 class="methods-node is-active"
                 data-method-title="Origins matching"
-                data-method-detail="Origins diagnostics compare policy mechanism triples with academic graph objects and named source candidates. This is currently internal and will be promoted after source expansion."
+                data-method-detail="Origins diagnostics will be rerun as policy canonical triples → ontology resolution → academic graph overlap → first academic appearance year."
               >
                 <span>Origins</span>
-                <em>matching diagnostics</em>
+                <em>waiting on triples</em>
                 <strong>in progress</strong>
               </button>
             </div>
@@ -83,12 +88,12 @@
             <article>
               <span class="status-dot status-dot--ready"></span>
               <strong>Case viewer</strong>
-              <p>Documents and extracted ToH evidence are visible in Explore.</p>
+              <p>Selected documents are visible in Explore; extracted ToH evidence is provisional.</p>
             </article>
             <article>
-              <span class="status-dot status-dot--ready"></span>
+              <span class="status-dot status-dot--active"></span>
               <strong>Mechanism map</strong>
-              <p>Common sign-aware relationships are bundled for inspection.</p>
+              <p>Common sign-aware relationships are placeholders until source-level intake.</p>
             </article>
             <article>
               <span class="status-dot status-dot--active"></span>
@@ -107,7 +112,7 @@
 
     <footer class="footer">
       <span>Working site prototype</span>
-      <span id="updated-label">Updated 2026-05-15</span>
+      <span id="updated-label">Updated 2026-05-16</span>
     </footer>
 
     <script src="assets/site-data.js"></script>

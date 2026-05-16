@@ -17,6 +17,13 @@ SITE = ROOT / "site"
 ASSETS = SITE / "assets"
 PUBLIC = SITE / "public"
 CASE_DOCS = PUBLIC / "cases"
+PROVISIONAL_POLICY_OBJECT = (
+    ROOT
+    / "archive"
+    / "superseded_policy_graph_normalization_2026-05-16"
+    / "policy_re_extraction_full"
+)
+CURRENT_POLICY_OBJECT = ROOT / "extractions" / "policy_from_source_uk"
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -259,7 +266,7 @@ def clean_policy_triple(value: str) -> str:
 def build_relationship_cases(
     top_edges: list[dict[str, object]], case_meta: dict[str, dict[str, object]]
 ) -> dict[str, list[dict[str, object]]]:
-    parsed_dir = ROOT / "extractions" / "policy_re_extraction_full" / "parsed"
+    parsed_dir = PROVISIONAL_POLICY_OBJECT / "parsed"
     wanted = {
         edge_key(str(edge["source"]), str(edge["target"]), str(edge["sign"])): edge
         for edge in top_edges
@@ -295,7 +302,7 @@ def build_relationship_cases(
 
 
 def collect_top_edge_case_ids(top_edges: list[dict[str, object]]) -> set[str]:
-    parsed_dir = ROOT / "extractions" / "policy_re_extraction_full" / "parsed"
+    parsed_dir = PROVISIONAL_POLICY_OBJECT / "parsed"
     wanted = {
         edge_key(str(edge["source"]), str(edge["target"]), str(edge["sign"]))
         for edge in top_edges
@@ -317,7 +324,7 @@ def collect_top_edge_case_ids(top_edges: list[dict[str, object]]) -> set[str]:
 
 
 def load_case_detail(case_id: str) -> dict[str, object]:
-    parsed_dir = ROOT / "extractions" / "policy_re_extraction_full" / "parsed"
+    parsed_dir = PROVISIONAL_POLICY_OBJECT / "parsed"
     files = sorted(parsed_dir.glob(f"{case_id}__T*.json"))
     tohs = []
     for path in files[:12]:
@@ -350,25 +357,13 @@ def main() -> None:
     (PUBLIC / "paper").mkdir(parents=True, exist_ok=True)
     CASE_DOCS.mkdir(parents=True, exist_ok=True)
 
-    overview = read_csv(
-        ROOT
-        / "extractions"
-        / "policy_re_extraction_full"
-        / "descriptive_review_internal"
-        / "corpus_overview.csv"
-    )
+    overview = read_csv(PROVISIONAL_POLICY_OBJECT / "descriptive_review_internal" / "corpus_overview.csv")
     total_cases = sum(as_int(r["n_cases"]) for r in overview)
     total_tohs = sum(as_int(r["n_tohs"]) for r in overview)
     total_edges = sum(as_int(r["n_edges"]) for r in overview)
     total_nodes = sum(as_int(r["n_nodes"]) for r in overview)
 
-    top_edges_raw = read_csv(
-        ROOT
-        / "extractions"
-        / "policy_re_extraction_full"
-        / "descriptive_review_internal"
-        / "top_affirmative_edges.csv"
-    )
+    top_edges_raw = read_csv(PROVISIONAL_POLICY_OBJECT / "descriptive_review_internal" / "top_affirmative_edges.csv")
     top_edges = [
         {
             "source": r["source"],
@@ -381,9 +376,7 @@ def main() -> None:
     ]
 
     origins_raw = read_csv(
-        ROOT
-        / "extractions"
-        / "policy_re_extraction_full"
+        PROVISIONAL_POLICY_OBJECT
         / "origins_diagnostics_internal"
         / "policy_to_frontiergraph_bridge_audit_v0"
         / "bridged_origins_diagnostics_v0"
@@ -409,9 +402,7 @@ def main() -> None:
     ]
 
     origins_triples_raw = read_csv(
-        ROOT
-        / "extractions"
-        / "policy_re_extraction_full"
+        PROVISIONAL_POLICY_OBJECT
         / "origins_diagnostics_internal"
         / "policy_to_frontiergraph_bridge_audit_v0"
         / "bridged_origins_diagnostics_v0"
@@ -496,9 +487,7 @@ def main() -> None:
         for r in named_source_summary_raw
     ]
 
-    cases_raw = read_csv(
-        ROOT / "extractions" / "policy_re_extraction_full" / "tables" / "case_graph_summary.csv"
-    )
+    cases_raw = read_csv(PROVISIONAL_POLICY_OBJECT / "tables" / "case_graph_summary.csv")
     raw_doc_index = build_raw_doc_index()
     sorted_cases = sorted(cases_raw, key=lambda x: as_int(x.get("edge_count", "")), reverse=True)
     detail_case_ids = {r["case_id"] for r in sorted_cases[:120]} | collect_top_edge_case_ids(top_edges)
@@ -543,7 +532,13 @@ def main() -> None:
     ]
 
     data = {
-        "updated": "2026-05-15",
+        "updated": "2026-05-16",
+        "dataStatus": (
+            "Source-level UK extraction in progress; current displays are "
+            "provisional placeholders from a superseded intermediate object."
+        ),
+        "currentPolicyObject": str(CURRENT_POLICY_OBJECT.relative_to(ROOT)),
+        "provisionalDisplayObject": str(PROVISIONAL_POLICY_OBJECT.relative_to(ROOT)),
         "headline": {
             "cases": total_cases,
             "casesLabel": fmt_int(total_cases),

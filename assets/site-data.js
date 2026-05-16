@@ -1,5 +1,8 @@
 window.HC_SITE_DATA = {
-  "updated": "2026-05-15",
+  "updated": "2026-05-16",
+  "dataStatus": "Source-level UK extraction in progress; current displays are provisional placeholders from a superseded intermediate object.",
+  "currentPolicyObject": "extractions/policy_from_source_uk",
+  "provisionalDisplayObject": "archive/superseded_policy_graph_normalization_2026-05-16/policy_re_extraction_full",
   "headline": {
     "cases": 1301,
     "casesLabel": "1,301",

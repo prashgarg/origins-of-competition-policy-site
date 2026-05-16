@@ -565,6 +565,10 @@ function renderOriginTimeline() {
   const maxYear = 2030;
   const x = (year) => Math.max(2, Math.min(98, ((yearValue(year) - minYear) / (maxYear - minYear)) * 100));
   el.innerHTML = `
+    <div class="origin-note">
+      <strong>Placeholder.</strong>
+      <span>Origins timing will be rerun from policy canonical triples after the source-level UK extraction is validated.</span>
+    </div>
     <div class="origin-legend" aria-label="Timeline legend">
       <span><i class="timeline-dot--policy"></i>Policy</span>
       <span><i class="timeline-dot--academic"></i>Academic graph</span>
@@ -620,6 +624,10 @@ function renderOriginFamilies(selectedFamily = null) {
     .slice(0, 8);
   const totalBuckets = Math.max(1, row.academicBefore + row.contemporaneous + row.policyBefore);
   el.innerHTML = `
+    <div class="origin-note">
+      <strong>Placeholder.</strong>
+      <span>Family overlap is provisional until policy triples are rebuilt from the source-level extraction.</span>
+    </div>
     <div class="origin-family-layout">
       <div class="origin-family-list">
         ${families.map((family) => `<button class="${family.family === row.family ? "is-active" : ""}" type="button" data-family-select="${esc(family.family)}">${familyLabel(family.family)}</button>`).join("")}
@@ -678,6 +686,10 @@ function renderOriginSources() {
   const selected = el.dataset.selectedSource || sources[0]?.source || "";
   const shownMatches = matches.filter((match) => !selected || match.source === selected);
   el.innerHTML = `
+    <div class="origin-note">
+      <strong>Placeholder.</strong>
+      <span>Named-source links are internal diagnostics until policy triples and source expansion are refreshed.</span>
+    </div>
     <div class="origin-source-layout">
       <div class="origin-source-shelf">
         ${sources.map((source) => `

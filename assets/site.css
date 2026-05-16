@@ -399,6 +399,54 @@ h3 {
   font-size: 0.82rem;
 }
 
+.status-note {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  max-width: 760px;
+  padding: 0.72rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.status-note strong {
+  flex: 0 0 auto;
+  color: var(--ink);
+  font-weight: 760;
+}
+
+.status-note--home {
+  margin: 0.65rem auto 0;
+}
+
+.status-note--paper {
+  display: grid;
+  gap: 0.18rem;
+  margin: 1.1rem 0;
+  padding: 0.72rem 0;
+}
+
+.explore-status {
+  margin-bottom: 1.05rem;
+}
+
+.origin-note {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 780px;
+  margin: 0.8rem 0 1rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.origin-note strong {
+  color: var(--ink);
+}
+
 .facts {
   display: grid;
   grid-template-columns: repeat(3, minmax(160px, 1fr));
@@ -2351,6 +2399,11 @@ th {
 
   .methods-map {
     padding: 1.3rem 0;
+  }
+
+  .status-note {
+    display: grid;
+    gap: 0.2rem;
   }
 
   .methods-map__path {
