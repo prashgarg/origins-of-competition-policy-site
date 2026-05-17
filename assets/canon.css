@@ -1,0 +1,1141 @@
+/* ==========================================================================
+ * Canon page — gallery, timeline, tabs, graph viewer, contrastive panels
+ * ========================================================================== */
+
+:root {
+  /* Tradition palette — distinct hues at consistent saturation,
+     tuned for the cream paper background. */
+  --tr-austrian: #3d7a5c;     /* forest green — knowledge, discovery */
+  --tr-ordoliberal: #6b4a7a;  /* dusty purple — institutional framework */
+  --tr-chicago: #8b1e2d;      /* deep red — Chicago doctrine */
+  --tr-schumpet: #a06b30;     /* sienna — creative destruction */
+  --tr-tce: #355c7d;          /* slate blue — transaction-cost */
+  --tr-ioclass: #1f4f4f;      /* deep teal — classical IO */
+  --tr-modern: #b8412a;       /* burnt orange — modern / Brandeisian */
+  --tr-freemkt: #6b6b1e;      /* olive — free-market */
+  --tr-method: #67625c;       /* warm grey — methodology */
+  --tr-other: #999;           /* neutral grey */
+
+  /* Thesis palette for graph edges within a single book.
+     Five distinct hues, harmonised with cream paper. */
+  --t1: #3b6e8f;
+  --t2: #a06b30;
+  --t3: #3d7a5c;
+  --t4: #8b1e2d;
+  --t5: #6b4a7a;
+
+  /* Shared-concept highlight in contrastive panels */
+  --shared: #c9962f;
+}
+
+.nav-icon--canon::before { content: "✦"; }
+
+/* --------------------------------------------------------------------------
+ * Hero
+ * -------------------------------------------------------------------------- */
+
+.canon-hero {
+  max-width: 1080px;
+  margin: 1.2rem auto 1.4rem;
+  padding: 0;
+}
+
+.canon-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0 0 0.5rem;
+  color: var(--ink);
+}
+
+.canon-hero__lead {
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0 0 1.25rem;
+  max-width: 760px;
+}
+
+.canon-hero__lead em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* Headline stats */
+
+.canon-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  margin: 0 0 1.05rem;
+  padding: 0;
+}
+
+.canon-stats > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+
+.canon-stats__num {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.canon-stats__label {
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* Timeline strip */
+
+.canon-timeline {
+  position: relative;
+  width: 100%;
+  height: 110px;
+  padding: 0;
+  margin: 0;
+}
+
+.canon-timeline svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.canon-timeline__axis {
+  stroke: var(--line-dark);
+  stroke-width: 1;
+}
+
+.canon-timeline__guide {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.canon-timeline__tick-label {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  fill: var(--muted);
+  text-anchor: middle;
+}
+
+.canon-timeline__dot {
+  cursor: pointer;
+  transition: r 0.15s ease;
+}
+
+.canon-timeline__dot:hover,
+.canon-timeline__dot.is-active {
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
+
+.canon-timeline__label {
+  font-family: var(--font-text);
+  font-size: 0.62rem;
+  fill: var(--muted);
+  text-anchor: middle;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.canon-timeline__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.1rem;
+  margin-top: 0.55rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.canon-timeline__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+}
+
+.canon-timeline__legend-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* --------------------------------------------------------------------------
+ * Tabs
+ * -------------------------------------------------------------------------- */
+
+.canon-tabs {
+  display: flex;
+  gap: 0.2rem;
+  border-bottom: 1px solid var(--line);
+  margin: 1.4rem 0 1.25rem;
+  padding: 0;
+}
+
+.canon-tab {
+  background: transparent;
+  border: 0;
+  padding: 0.55rem 1rem;
+  font-family: var(--font-text);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.canon-tab:hover {
+  color: var(--ink);
+}
+
+.canon-tab.is-active {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+.canon-panel {
+  display: none;
+}
+
+.canon-panel.is-active {
+  display: block;
+}
+
+.canon-panel__intro {
+  font-size: 0.92rem;
+  color: var(--ink);
+  max-width: 720px;
+  margin: 0 0 1.4rem;
+  line-height: 1.55;
+}
+
+/* --------------------------------------------------------------------------
+ * Books panel layout
+ * -------------------------------------------------------------------------- */
+
+.canon-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 300px) 1fr;
+  gap: 1.6rem;
+  align-items: start;
+}
+
+@media (max-width: 880px) {
+  .canon-layout {
+    grid-template-columns: 1fr;
+  }
+  .canon-rail {
+    position: static;
+    max-height: none;
+  }
+}
+
+/* Mobile polish — narrow viewports */
+@media (max-width: 640px) {
+  .canon-hero h1 { font-size: 2rem; }
+  .canon-stats { gap: 0.9rem; }
+  .canon-stats__num { font-size: 1.2rem; }
+  .canon-timeline { height: 140px; }
+  .canon-graph,
+  .canon-tension__graph { height: 360px; }
+  .canon-detail { padding: 1rem; }
+  .canon-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .canon-tab { white-space: nowrap; }
+}
+
+.canon-rail {
+  position: sticky;
+  top: calc(var(--nav-height) + 0.5rem);
+  align-self: start;
+  max-height: calc(100vh - var(--nav-height) - 1rem);
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.canon-filter-group {
+  margin-bottom: 0.9rem;
+}
+
+.canon-filter-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+.canon-filter {
+  display: flex;
+  gap: 0.28rem;
+  flex-wrap: wrap;
+}
+
+.canon-filter__btn {
+  background: transparent;
+  border: 1px solid var(--line-dark);
+  border-radius: 999px;
+  padding: 0.22rem 0.66rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.12s ease;
+  position: relative;
+}
+
+.canon-filter__btn:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.canon-filter__btn.is-active {
+  background: var(--ink);
+  color: var(--bg-soft);
+  border-color: var(--ink);
+}
+
+.canon-filter__btn--tradition.is-active {
+  background: var(--tradition-color, var(--ink));
+  border-color: var(--tradition-color, var(--ink));
+  color: white;
+}
+
+.canon-filter__swatch {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 0.32rem;
+  vertical-align: middle;
+  background: var(--tradition-color, var(--muted));
+}
+
+/* Search input — used by Books rail and Concepts rail */
+
+.canon-search {
+  position: relative;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.canon-search__icon {
+  position: absolute;
+  left: 0.55rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 0.85rem;
+  pointer-events: none;
+}
+
+.canon-search input {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line-dark);
+  border-radius: 9px;
+  padding: 0.42rem 0.6rem 0.42rem 1.7rem;
+  font-size: 0.82rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+
+.canon-search input::placeholder {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.canon-search input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.canon-list-meta {
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin: 0.55rem 0 0.2rem;
+  letter-spacing: 0.01em;
+}
+
+.canon-list-meta strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.canon-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.3rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+}
+
+.canon-list__item {
+  display: block;
+  padding: 0.5rem 0.65rem;
+  border-radius: 10px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all 0.1s ease;
+  border-left: 3px solid transparent;
+}
+
+.canon-list__item:hover {
+  background: var(--faint);
+  border-color: var(--line);
+}
+
+.canon-list__item.is-selected {
+  background: var(--surface);
+  border-color: var(--line-dark);
+  border-left-color: var(--tradition-color, var(--ink));
+}
+
+.canon-list__head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.canon-list__year {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-2);
+  min-width: 2.6em;
+}
+
+.canon-list__author {
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.canon-list__chip {
+  display: inline-block;
+  margin-left: auto;
+  font-size: 0.62rem;
+  color: var(--tradition-color, var(--muted));
+  padding: 0;
+  white-space: nowrap;
+}
+
+.canon-list__title {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.35;
+  margin-top: 0.18rem;
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+ * Detail panel
+ * -------------------------------------------------------------------------- */
+
+.canon-detail {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.3rem 1.4rem;
+  min-height: 560px;
+  position: relative;
+}
+
+.canon-empty {
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-style: italic;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.canon-detail__head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  margin-bottom: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.canon-detail__year {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-2);
+}
+
+.canon-detail__author {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.canon-detail__title {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--ink);
+  font-style: italic;
+  margin: 0 0 0.2rem;
+  max-width: 80ch;
+}
+
+.canon-detail__venue {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--muted);
+  margin: 0 0 0.9rem;
+}
+
+.canon-detail__meta {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.1rem;
+}
+
+.canon-detail__meta-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: var(--faint);
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.canon-detail__meta-pill--tradition {
+  background: var(--tradition-color, var(--faint));
+  color: white;
+}
+
+/* Two-column detail body: thesis cards on the left, graph on the right */
+
+.canon-detail__body {
+  display: grid;
+  grid-template-columns: minmax(220px, 260px) 1fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+
+@media (max-width: 920px) {
+  .canon-detail__body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.canon-theses {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.canon-thesis {
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--thesis-color, var(--ink));
+  padding: 0.55rem 0.7rem;
+  border-radius: 8px;
+  background: var(--bg-soft);
+  cursor: pointer;
+  transition: all 0.12s ease;
+  font-size: 0.78rem;
+}
+
+.canon-thesis:hover {
+  background: var(--surface);
+}
+
+.canon-thesis.is-active {
+  background: var(--surface);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.canon-thesis.is-dim {
+  opacity: 0.4;
+}
+
+.canon-thesis__id {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--thesis-color, var(--ink));
+  font-size: 0.76rem;
+  margin-right: 0.3rem;
+}
+
+.canon-thesis__label {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.canon-thesis__summary {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+  line-height: 1.45;
+}
+
+/* Graph container */
+
+.canon-graph {
+  width: 100%;
+  height: 540px;
+  background: var(--bg-soft);
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+
+.canon-graph svg {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.canon-graph svg:active {
+  cursor: grabbing;
+}
+
+.canon-graph__hint {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 0.68rem;
+  color: var(--muted);
+  pointer-events: none;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* Graph SVG element styling */
+
+.canon-node circle {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 1.2;
+  transition: stroke-width 0.12s, fill 0.12s, opacity 0.12s;
+}
+
+.canon-node:hover circle,
+.canon-node.is-hover circle {
+  fill: var(--bg);
+  stroke-width: 2;
+}
+
+.canon-node.is-shared circle {
+  fill: var(--shared);
+  fill-opacity: 0.18;
+  stroke: var(--shared);
+  stroke-width: 1.8;
+}
+
+.canon-node text {
+  font-family: var(--font-text);
+  font-size: 10px;
+  fill: var(--ink);
+  pointer-events: none;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.canon-edge {
+  fill: none;
+  stroke-width: 1.4;
+  opacity: 0.7;
+  transition: stroke-width 0.12s, opacity 0.12s;
+}
+
+.canon-edge:hover,
+.canon-edge.is-hover {
+  stroke-width: 2.6;
+  opacity: 1;
+}
+
+.canon-edge.is-dim {
+  opacity: 0.12;
+}
+
+.canon-node.is-dim circle { opacity: 0.25; }
+.canon-node.is-dim text   { opacity: 0.3; }
+
+/* Tooltip */
+
+.canon-tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: rgba(23, 21, 19, 0.95);
+  color: #f9f7f3;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  padding: 0.5rem 0.65rem;
+  border-radius: 6px;
+  max-width: 300px;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+  z-index: 50;
+  font-family: var(--font-text);
+}
+
+.canon-tooltip.is-visible {
+  opacity: 1;
+}
+
+.canon-tooltip__rel {
+  display: block;
+  font-weight: 600;
+  color: var(--bg-soft);
+  margin-bottom: 0.2rem;
+}
+
+.canon-tooltip__rel strong {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.canon-tooltip__evidence {
+  color: #d8d4cc;
+  font-style: italic;
+  font-size: 0.68rem;
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+ * Related-works footer (inside Books detail panel)
+ * -------------------------------------------------------------------------- */
+
+.canon-related {
+  margin-top: 1.4rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+}
+
+.canon-related__title {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.55rem;
+}
+
+.canon-related__sub {
+  font-family: var(--font-text);
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-left: 0.4rem;
+}
+
+.canon-related__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.5rem;
+}
+
+.canon-related__card {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--tradition-color, var(--ink));
+  border-radius: 8px;
+  padding: 0.55rem 0.65rem;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: var(--ink);
+  transition: background 0.12s, transform 0.12s;
+}
+
+.canon-related__card:hover {
+  background: var(--surface);
+  transform: translateY(-1px);
+}
+
+.canon-related__card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  margin-bottom: 0.3rem;
+}
+
+.canon-related__year {
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--accent-2);
+}
+
+.canon-related__author {
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.canon-related__count {
+  margin-left: auto;
+  font-size: 0.68rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.canon-related__shared {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.canon-related__shared span {
+  display: inline-block;
+  font-size: 0.66rem;
+  color: var(--muted);
+  background: var(--faint);
+  padding: 0.08rem 0.4rem;
+  border-radius: 999px;
+  font-style: italic;
+}
+
+.canon-related__empty {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+ * Concepts panel
+ * -------------------------------------------------------------------------- */
+
+.concepts-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) 1fr;
+  gap: 1.6rem;
+  align-items: start;
+}
+
+@media (max-width: 880px) {
+  .concepts-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.concepts-rail {
+  position: sticky;
+  top: calc(var(--nav-height) + 0.5rem);
+  align-self: start;
+  max-height: calc(100vh - var(--nav-height) - 1rem);
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.concepts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.concept-list__item {
+  display: grid;
+  grid-template-columns: 26px 1fr auto;
+  gap: 0.45rem;
+  align-items: baseline;
+  padding: 0.36rem 0.55rem;
+  border-radius: 7px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.1s ease;
+}
+
+.concept-list__item:hover {
+  background: var(--faint);
+}
+
+.concept-list__item.is-selected {
+  background: var(--surface);
+  border-color: var(--line-dark);
+}
+
+.concept-list__count {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.84rem;
+  color: var(--accent-2);
+  text-align: right;
+}
+
+.concept-list__label {
+  font-size: 0.82rem;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.concept-list__label--canonical::after {
+  content: "◆";
+  margin-left: 0.3rem;
+  color: var(--accent-2);
+  font-size: 0.62rem;
+  vertical-align: super;
+}
+
+.concept-list__occ {
+  font-size: 0.66rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.concept-detail {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.3rem 1.4rem;
+  min-height: 560px;
+}
+
+.concept-detail__name {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.45rem;
+  color: var(--ink);
+}
+
+.concept-detail__meta {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.85rem;
+}
+
+.meta-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: var(--faint);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.meta-pill--canonical {
+  background: color-mix(in srgb, var(--accent-2) 18%, transparent);
+  color: var(--accent-2);
+  font-weight: 500;
+}
+
+.concept-detail__surface {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 1.1rem;
+  line-height: 1.5;
+}
+
+.concept-detail__surface em {
+  font-style: italic;
+}
+
+.concept-detail__books {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.concept-book {
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--tradition-color, var(--ink));
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem 0.65rem;
+  background: var(--bg-soft);
+}
+
+.concept-book__head {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  cursor: pointer;
+  font: inherit;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.concept-book__head:hover .concept-book__author {
+  text-decoration: underline;
+  text-decoration-color: var(--tradition-color, var(--ink));
+  text-underline-offset: 3px;
+}
+
+.concept-book__year {
+  font-family: var(--font-display);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--accent-2);
+}
+
+.concept-book__author {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.concept-book__edges {
+  margin-left: auto;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.concept-book__edges-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+}
+
+.concept-book__edges-list li {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--ink);
+  padding-left: 1.7rem;
+  position: relative;
+}
+
+.concept-book__edge-thesis {
+  position: absolute;
+  left: 0;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+.concept-book__edges-list em {
+  color: var(--accent);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.concept-book__edges-list strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+ * Tensions panel — contrastive pairs
+ * -------------------------------------------------------------------------- */
+
+.canon-tensions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.canon-tension {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.1rem 1.3rem;
+}
+
+.canon-tension__head {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.canon-tension__sub {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0 0 0.85rem;
+  max-width: 78ch;
+  line-height: 1.5;
+}
+
+.canon-tension__shared {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 0.85rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.canon-tension__shared-swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--shared);
+  opacity: 0.5;
+  border: 1.2px solid var(--shared);
+}
+
+.canon-tension__panes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 880px) {
+  .canon-tension__panes {
+    grid-template-columns: 1fr;
+  }
+}
+
+.canon-tension__pane {
+  display: flex;
+  flex-direction: column;
+}
+
+.canon-tension__pane-head {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.15rem;
+}
+
+.canon-tension__pane-claim {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin: 0 0 0.45rem;
+  line-height: 1.4;
+}
+
+.canon-tension__graph {
+  width: 100%;
+  height: 360px;
+  background: var(--bg-soft);
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+
+.canon-tension__graph svg {
+  width: 100%;
+  height: 100%;
+}

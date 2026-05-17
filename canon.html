@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Canon | The Origins of Competition Policy</title>
+    <meta
+      name="description"
+      content="The canonical-works corpus: sixteen named touchstones of antitrust thought, from Hayek 1945 to Wu 2018, each rendered as an interactive thesis graph."
+    />
+    <link rel="stylesheet" href="assets/site.css" />
+    <link rel="stylesheet" href="assets/canon.css" />
+    <script src="https://d3js.org/d3.v7.min.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="wordmark" href="index.html" aria-label="The Origins of Competition Policy home">
+        <span>The Origins of Competition Policy</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="explore.html"><span class="nav-icon nav-icon--explore" aria-hidden="true"></span><span>Explore</span></a>
+        <a href="canon.html" aria-current="page"><span class="nav-icon nav-icon--canon" aria-hidden="true"></span><span>Canon</span></a>
+        <a href="paper.html"><span class="nav-icon nav-icon--paper" aria-hidden="true"></span><span>Paper</span></a>
+        <a href="methods.html"><span class="nav-icon nav-icon--methods" aria-hidden="true"></span><span>Methods &amp; Data</span></a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section page-section canon">
+        <header class="canon-hero">
+          <h1>The canon</h1>
+          <p class="canon-hero__lead">
+            Sixteen named touchstones of antitrust thought, from <em>Hayek 1945</em> to <em>Wu 2018</em>. Each work decomposes into theses; each thesis is a small graph of mechanism claims. Together they sketch the intellectual map of antitrust.
+          </p>
+          <dl class="canon-stats" id="canon-stats" aria-label="Corpus headline numbers"></dl>
+          <div class="canon-timeline" id="canon-timeline" aria-label="Timeline of canonical works"></div>
+          <div class="canon-timeline__legend" id="canon-timeline-legend" aria-hidden="true"></div>
+        </header>
+
+        <nav class="canon-tabs" role="tablist" aria-label="Canon views">
+          <button class="canon-tab is-active" data-tab="books" role="tab" aria-selected="true">Books</button>
+          <button class="canon-tab" data-tab="tensions" role="tab" aria-selected="false">Tensions</button>
+          <button class="canon-tab" data-tab="concepts" role="tab" aria-selected="false">Concepts</button>
+        </nav>
+
+        <section class="canon-panel is-active" id="panel-books" role="tabpanel">
+          <div class="canon-layout">
+            <aside class="canon-rail" aria-label="Canonical works">
+              <label class="canon-search">
+                <span class="canon-search__icon" aria-hidden="true">⌕</span>
+                <input id="book-search" type="search" placeholder="search author, title, concept…" autocomplete="off" />
+              </label>
+              <div class="canon-filter-group">
+                <div class="canon-filter-label">Tradition</div>
+                <div class="canon-filter" role="toolbar" aria-label="Filter by tradition" id="filter-tradition"></div>
+              </div>
+              <div class="canon-filter-group">
+                <div class="canon-filter-label">Era</div>
+                <div class="canon-filter" role="toolbar" aria-label="Filter by era">
+                  <button class="canon-filter__btn is-active" data-era="all" type="button">All</button>
+                  <button class="canon-filter__btn" data-era="1900-1949" type="button">1900&ndash;49</button>
+                  <button class="canon-filter__btn" data-era="1950-1979" type="button">1950&ndash;79</button>
+                  <button class="canon-filter__btn" data-era="1980-2025" type="button">1980+</button>
+                </div>
+              </div>
+              <div class="canon-list-meta" id="canon-list-meta"></div>
+              <ol class="canon-list" id="canon-list" aria-live="polite"></ol>
+            </aside>
+
+            <article class="canon-detail" id="canon-detail" aria-live="polite">
+              <div class="canon-empty">Select a work from the list or timeline.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="canon-panel" id="panel-tensions" role="tabpanel">
+          <p class="canon-panel__intro">
+            Curated contrastive pairs &mdash; two works engaging the same conceptual territory from opposite directions. Shared concept nodes are drawn in a highlight colour so the disagreement is visible at a glance.
+          </p>
+          <div class="canon-tensions" id="canon-tensions"></div>
+        </section>
+
+        <section class="canon-panel" id="panel-concepts" role="tabpanel">
+          <p class="canon-panel__intro">
+            Every concept node across the corpus, grouped by canonical concept where possible (so synonyms like &ldquo;per-se illegality&rdquo;, &ldquo;per-se prohibition&rdquo;, and &ldquo;per-se categories&rdquo; collapse to one entry). Click a concept to see which works invoke it and how.
+          </p>
+          <div class="concepts-layout">
+            <aside class="concepts-rail" aria-label="Concepts">
+              <label class="canon-search">
+                <span class="canon-search__icon" aria-hidden="true">⌕</span>
+                <input id="concept-search" type="search" placeholder="search concept or surface form…" autocomplete="off" />
+              </label>
+              <div class="canon-filter-group">
+                <div class="canon-filter-label">Sort</div>
+                <div class="canon-filter" role="toolbar" aria-label="Sort concepts">
+                  <button class="canon-filter__btn is-active" data-concept-sort="n_books" type="button">Most-shared</button>
+                  <button class="canon-filter__btn" data-concept-sort="n_occurrences" type="button">Most-used</button>
+                  <button class="canon-filter__btn" data-concept-sort="alpha" type="button">A&ndash;Z</button>
+                </div>
+              </div>
+              <div class="canon-filter-group">
+                <div class="canon-filter-label">Show</div>
+                <div class="canon-filter" role="toolbar" aria-label="Filter concepts">
+                  <button class="canon-filter__btn is-active" data-concept-filter="multi" type="button">In ≥2 books</button>
+                  <button class="canon-filter__btn" data-concept-filter="all" type="button">All</button>
+                  <button class="canon-filter__btn" data-concept-filter="canonical" type="button">Canonical only</button>
+                </div>
+              </div>
+              <div class="canon-list-meta" id="concept-list-meta"></div>
+              <ol class="concepts-list" id="concepts-list" aria-live="polite"></ol>
+            </aside>
+
+            <article class="concept-detail" id="concept-detail" aria-live="polite">
+              <div class="canon-empty">Select a concept from the list.</div>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Working site prototype</span>
+      <span id="updated-label">Canon: 16 works · 269 concepts · 2026-05-17</span>
+    </footer>
+
+    <script src="assets/canon-data.js"></script>
+    <script src="assets/canon.js" defer></script>
+  </body>
+</html>
